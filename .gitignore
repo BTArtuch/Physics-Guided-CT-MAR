@@ -1,0 +1,28 @@
+# Environments
+mar_env/
+venv/
+.env
+
+# Compiled Python/C++ binaries
+__pycache__/
+*.py[cod]
+*.so
+build/
+dist/
+*.egg-info/
+
+# Datasets and Checkpoints
+dataset_path/
+*.pth
+*.pt
+*.nii
+*.nii.gz
+*.dcm
+
+# IDEs and OS files
+.vscode/
+.idea/
+.DS_Store
+
+# GitHub Token
+git_token.txt
