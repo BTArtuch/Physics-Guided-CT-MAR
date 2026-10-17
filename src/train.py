@@ -8,7 +8,7 @@ from models.unet3d import UNet3D
 from models.loss import DualDomainLoss
 
 def train():
-    # 1. Hyperparameters & Configuration
+    # Hyperparameters & Configuration
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     num_epochs = 50
     batch_size = 1
@@ -18,17 +18,17 @@ def train():
     num_angles = 180
     angles = torch.linspace(0, 3.14159, num_angles, device=device)
     
-    # 2. Data Loading
+    # Data Loading
     # TODO: Replace with actual dataset path
     dataset = MARDataset(data_dir='./dataset_path')
     dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True, num_workers=4)
     
-    # 3. Model & Loss Initialization
+    # Model & Loss Initialization
     model = UNet3D(in_channels=2, out_channels=1, base_features=32).to(device)
     criterion = DualDomainLoss(projection_angles=angles, lambda_radon=0.1).to(device)
     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
     
-    # 4. Training Loop
+    # Training Loop
     for epoch in range(num_epochs):
         model.train()
         epoch_loss = 0.0
